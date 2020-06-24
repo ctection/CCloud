@@ -20,7 +20,7 @@ echo '<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-l
 				<input type="password" name="password" class="form-control" id="loginPassword" required>
 			  </div>
 			  <div class="form-group form-check">
-				<input type="checkbox" name="rememberme" value="1" class="form-check-input" id="loginRemember" required>
+				<input type="checkbox" name="rememberme" value="1" class="form-check-input" id="loginRemember">
 				<label class="form-check-label" for="loginRemember">Remember Me</label>
 			  </div>
 		  </div>
@@ -57,7 +57,7 @@ echo '<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" ari
 				<input type="password" name="password2" class="form-control" id="registerPassword2" required>
 			  </div>
 			  <div class="form-group form-check">
-				<input type="checkbox" name="rememberme" value="1" class="form-check-input" id="registerRemember" required>
+				<input type="checkbox" name="rememberme" value="1" class="form-check-input" id="registerRemember">
 				<label class="form-check-label" for="registerRemember">Remember Me</label>
 			  </div>
 			  <input type="hidden" name="register" value="1" />
@@ -73,11 +73,20 @@ echo '<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" ari
 
 echo '
 <script>
+
 function openLogin(){
 	$("#loginModal").modal("show");
 }
 function openRegister(){
 	$("#registerModal").modal("show");
+}
+
+var hash = $(location).attr(\'hash\');
+if(hash == "#loginModal"){
+	openLogin();
+}
+if(hash == "#registerModal"){
+	openRegister();
 }
 
 </script>

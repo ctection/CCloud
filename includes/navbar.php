@@ -1,7 +1,12 @@
 <?PHP
 
 if(!defined("HOME_TITLE")){
-	include("./config.php");
+	include("./includes/config.php");
+}
+
+if(!isset($authok)){
+	$authok = 0;
+	include("./userhandler.php");
 }
 
 echo'<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,9 +26,15 @@ echo'<nav class="navbar navbar-expand-lg navbar-light bg-light">
       <li class="nav-item">
         <a class="nav-link" href="./index.php#pricing" tabindex="-1">Pricing</a>
       </li>
-    </ul>
-    <button onclick="openLogin()" class="btn btn-outline-secondary my-2 my-sm-0" style="margin-right: 5px;">Log In</button> <button onclick="openRegister()" class="btn btn-outline-success my-2 my-sm-0">Register</button>
-  </div>
+    </ul>';
+    
+if($authok == 1){
+	echo '<a href="./userhandler.php?logout" class="btn btn-outline-primary my-2 my-sm-0" style="margin-right: 5px;">Log Out</a>';
+}else{
+	echo '<button onclick="openLogin()" class="btn btn-outline-secondary my-2 my-sm-0" style="margin-right: 5px;">Log In</button> <button onclick="openRegister()" class="btn btn-outline-success my-2 my-sm-0">Register</button>';
+}
+	
+echo '</div>
 </nav>';
 
 ?>
